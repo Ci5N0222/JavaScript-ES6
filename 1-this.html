@@ -1,0 +1,25 @@
+<script>
+    console.log(this)           // window
+
+    function func() {
+        console.log(this);
+    }
+    func();                     // window
+
+    var obj = {
+        data: 'Kim',
+        func: function(){
+            console.log('this');    
+        } 
+    }
+    obj.func()                  // Obj
+
+</script>
+
+this
+1. 그냥 쓰거나 함수안에서 사용할 경우 ==> window ==> 전역 오브젝트, 기본 함수들 수납공간
+2. 오브젝트 내 함수안에서 this를 사용하면 그 함수를 가지고있는 오브젝트를 뜻한다.
+** 신문법 arrow function ()=>{}은 상위 this를 생성하지 않고 최상위 this를 물려서 사용한다.
+
+결론: this 는 나를 담고있는 오브젝트를 표현한다.
+
