@@ -1,4 +1,22 @@
+<body>
+    <button id="btn">button</button>
+
+    <p>
+        this
+        1. 그냥 쓰거나 일반 함수안에서 사용할 경우 ==> window ==> 전역 오브젝트, 기본 함수들 수납공간
+        2. 오브젝트 내 함수안에서 this를 사용하면 그 함수를 가지고있는 오브젝트를 뜻한다.
+        3. 오브젝트를 생성하는 기계를 만든다. 기계 안에서 사용하면 새로 생성되는 오브젝트를 뜻함
+        4. 이벤트 리스너
+        ** 신문법 arrow function ()=>{}은 상위 this를 생성하지 않고 최상위 this를 물려서 사용한다.
+        
+        결론: this 는 나를 담고있는 오브젝트를 표현한다.
+    </p>
+        
+</body>
+
 <script>
+    
+    // 1
     console.log(this)           // window
 
     function func() {
@@ -6,6 +24,8 @@
     }
     func();                     // window
 
+
+    // 2
     var obj = {
         data: 'Kim',
         func: function(){
@@ -14,12 +34,40 @@
     }
     obj.func()                  // Obj
 
+
+    // 3
+    function machine() {
+        this.name = 'Kim'       // instance 생성: 새로 생성되는 오브젝트
+    }
+
+    var object = new machine();
+
+    
+    // 4
+    document.querySelector('#btn').addEventListener('click', function(e){
+        console.log(this);
+        console.log(e.currentTarget); 
+        var array = [1, 2, 3];
+        array.forEach(function(item){
+            // item은 array에 있는 각각의 데이터
+            console.log(item);
+            console.log(this);      // window : 1번에 해당함
+        })
+    })
+    
+
+    // 5
+    var obj = {
+        name : ['Kim', 'Noh', 'Park'],
+        func : function(){
+            console.log(this)       // obj
+            obj.name.forEach(function(){
+                console.log(this);  // window
+            })
+            obj.name.forEach(() => {
+                console.log(this);  // obj : this를 재설정하지 않기 때문에 상위 this를 사용함
+            })
+        }
+    }
+
 </script>
-
-this
-1. 그냥 쓰거나 함수안에서 사용할 경우 ==> window ==> 전역 오브젝트, 기본 함수들 수납공간
-2. 오브젝트 내 함수안에서 this를 사용하면 그 함수를 가지고있는 오브젝트를 뜻한다.
-** 신문법 arrow function ()=>{}은 상위 this를 생성하지 않고 최상위 this를 물려서 사용한다.
-
-결론: this 는 나를 담고있는 오브젝트를 표현한다.
-
