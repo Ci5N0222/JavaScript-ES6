@@ -4,41 +4,31 @@
 
 <script>
 
-    /*
-        문제 1. 
-        오브젝트 obj 안에 seyHi()라고 작성하면 안녕 나는 손흥민 이라는 글자가 출력되어야 합니다.
-        odj 안에는 "name" : "손흥민" 이 존재합니다.
-    */
+    // 1
     var obj = {
         name: "손흥민",
         seyHi: function(){
             console.log(`안녕 나는 ${this.name}`);
         }
     }
-
     obj.seyHi();
 
 
-    /*
-        문제 2. 
-        오브젝트 내의 데이터를 전부 더해주는 메소드 만들기
-    */
-
+    // 2
     var dataObj = {
-        data: [1, 2, 3, 4, 5],
-        func: function plus(){
-            let sum = 0;
-            this.data.forEach(item => sum += item);
-            console.log(sum);
-        }
+        data: [1, 2, 3, 4, 5]
+    }
+    dataObj.func = function plus(){
+        let sum = 0;
+        this.data.forEach(item => sum += item);
+        console.log(sum);
     }
     dataObj.func();
 
 
     // 3
-    document.querySelector('#btn').addEventListener('click', setTimeout(function(){
-        console.log(this.innerHTML);
-    }, 1000))
-        
+    document.querySelector('#btn').addEventListener('click', function(){
+        setTimeout(() => console.log(this.innerHTML), 1000);
+    });
 
 </script>
