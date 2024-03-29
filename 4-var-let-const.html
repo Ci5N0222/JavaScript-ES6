@@ -1,0 +1,22 @@
+<body>
+    <button id="btn">button</button>
+</body>
+
+<script>
+
+    // 재선언O, 재할당O, 범위:function
+    var name = 'kim';
+    var name = 'noh';
+
+    // 재선언X, 재할당O, 범위: {}
+    let age = 10;
+    age = 10;
+
+    // 재선언X, 재할당X, 범위: {} (constant = 상수)
+    const location = 'bucheon';
+
+    // 수정이 불가능한 오브젝트
+    const people = {이름: 'kim'}
+    Object.freeze(people);
+
+</script>
